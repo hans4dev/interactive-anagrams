@@ -11,4 +11,14 @@ class AnagramFinderTest extends Specification {
         "listen" | "silent"
         "evil"   | "vile"
     }
+
+    def "false for single word non-anagrams"(String text1, String text2) {
+        expect: "false is returned when passed to predicate method"
+        ! AnagramFinder.areAnagrams(text1, text2)
+
+        where: "two texts which are no anagrams"
+        text1    | text2
+        "listen" | "list"
+        "evil"   | "exil"
+    }
 }
