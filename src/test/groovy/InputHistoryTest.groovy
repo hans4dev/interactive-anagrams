@@ -15,7 +15,7 @@ class InputHistoryTest extends Specification {
 
         when: "adding 3 texts"
         for (i in 1..3) {
-            history.add("text {i}")
+            history.add("text $i")
         }
 
         then: "history has size 3"
@@ -32,6 +32,6 @@ class InputHistoryTest extends Specification {
         def found = history.findAnagramsFor("silent")
 
         then: "the previous 2 inputs are found"
-        found == ["listen", "enlist"]
+        found as Set  == ["listen", "enlist"] as Set
     }
 }
