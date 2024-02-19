@@ -3,7 +3,8 @@ import java.util.Arrays;
 import static java.util.Arrays.*;
 
 /**
- * Uses the approach "sort char-arrays" to verify anagrams.
+ * Uses the approach "sort character arrays" to verify anagrams.
+ * Considers letters (a-z) only, letter-case, whitespace and punctuation or other characters are ignored.
  * <p>
  * A predicate method {{@link #areAnagrams(String, String)} can be used to verify anagrams.
  * </p>
@@ -15,19 +16,23 @@ public class AnagramFinder {
      * @param subject a word or phrase
      * @param phrase  another word or phrase
      * @return true if phrase is an anagram of subject, false otherwise
-     * @throws IllegalArgumentException if any argument is null, blank or trimmed less than 2 chars
+     * @throws IllegalArgumentException if any argument is null, blank or trimmed less than 2 letters
      */
     public static boolean areAnagrams(String subject, String phrase) throws IllegalArgumentException {
 
         requireMinLength(subject, 2);
         requireMinLength(phrase, 2);
 
-        char[] subjectChars = subject.toCharArray();
-        sort(subjectChars);
-        char[] phraseChars = phrase.toCharArray();
-        sort(phraseChars);
+        char[] subjectLetters = letters(subject);
+        sort(subjectLetters);
+        char[] phraseLetters = letters(phrase);
+        sort(phraseLetters);
 
-        return Arrays.equals(subjectChars, phraseChars);
+        return Arrays.equals(subjectLetters, phraseLetters);
+    }
+
+    private static char[] letters(String text) {
+        return text.trim().toLowerCase().replaceAll("[^a-z]+", "").toCharArray();
     }
 
     private static void requireMinLength(String text, int minimumLength) {
