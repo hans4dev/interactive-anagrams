@@ -10,13 +10,17 @@ import static java.util.Arrays.*;
  */
 public class AnagramFinder {
     /**
-     * Verifies if two given texts are anagrams of each other.
+     * Verifies if two texts are anagrams of each other.
      *
      * @param subject a word or phrase
-     * @param phrase another word or phrase
-     * @return true if phrase is an anagram of phrase
+     * @param phrase  another word or phrase
+     * @return true if phrase is an anagram of subject, false otherwise
+     * @throws IllegalArgumentException if any argument is null, blank or trimmed less than 2 chars
      */
-    public static boolean areAnagrams(String subject, String phrase) {
+    public static boolean areAnagrams(String subject, String phrase) throws IllegalArgumentException {
+
+        requireMinLength(subject, 2);
+        requireMinLength(phrase, 2);
 
         char[] subjectChars = subject.toCharArray();
         sort(subjectChars);
@@ -25,4 +29,11 @@ public class AnagramFinder {
 
         return Arrays.equals(subjectChars, phraseChars);
     }
+
+    private static void requireMinLength(String text, int minimumLength) {
+        if (text == null || text.isBlank() || text.trim().length() < minimumLength) {
+            throw new IllegalArgumentException(String.format("must be not null and have a minimum length of %d", minimumLength));
+        }
+    }
+
 }
