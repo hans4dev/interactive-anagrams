@@ -5,6 +5,7 @@ import static java.util.Arrays.*;
 /**
  * Uses the approach "sort character arrays" to verify anagrams.
  * Considers letters (a-z) only while letter-case, whitespace and punctuation or other characters are ignored.
+ * Uses {@link AnagramInput} for validation and cleaning.
  * <p>
  * A predicate method {{@link #areAnagrams(String, String)} can be used to verify anagrams.
  * </p>
@@ -20,8 +21,8 @@ public class AnagramFinder {
      */
     public static boolean areAnagrams(String subject, String phrase) throws IllegalArgumentException {
 
-        char[] subjectLetters = requireLetters(subject, 2).toCharArray();
-        char[] phraseLetters = requireLetters(phrase, 2).toCharArray();
+        char[] subjectLetters = AnagramInput.requireLetters(subject, 2).toCharArray();
+        char[] phraseLetters = AnagramInput.requireLetters(phrase, 2).toCharArray();
 
         if (subjectLetters.length != phraseLetters.length) {
             return false;
@@ -31,23 +32,6 @@ public class AnagramFinder {
         sort(phraseLetters);
 
         return Arrays.equals(subjectLetters, phraseLetters);
-    }
-
-    private static String letters(String text) {
-        return text.trim().toLowerCase().replaceAll("[^a-z]+", "");
-    }
-
-    private static String requireLetters(String text, int minimumLength) {
-        if (text == null || text.isBlank() || text.trim().length() < minimumLength) {
-            throw new IllegalArgumentException(String.format("must be not null and have a minimum length of %d", minimumLength));
-        }
-
-        String letters = letters(text);
-        if (letters.length() < minimumLength) {
-            throw new IllegalArgumentException(String.format("must contain at least %d letters", minimumLength));
-        }
-
-        return letters;
     }
 
 }
