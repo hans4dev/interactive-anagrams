@@ -32,7 +32,7 @@ test {
 }
 
 // See: [Creating a Fat Jar in Gradle | Baeldung](https://www.baeldung.com/gradle-fat-jar)
-task fatJar(type: Jar) {
+tasks.register('fatJar', Jar) {
     manifest {
         attributes 'Implementation-Title': 'Interactive Anagrams',
                 'Implementation-Version': project.version,
