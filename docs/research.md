@@ -28,25 +28,31 @@ It proposes three ways of solving:
 
 1. Check by Sorting: Convert strings to char-arrays then sort and compare.
    Their normalized/canonical forms should be the same.
-   Advantages:
+
+   **Advantages**:
     * easy to understand and implement
     * normalized form can be used as key for indexed lookup
-      Disadvantages:
+      
+   **Disadvantages**:
     * O(n log n) because copying and sorting an array of n characters
 2. Check by Counting: Count the number of occurrences of each character and compare.
    Their histograms should be the same.
-   Advantages:
+
+   **Advantages**:
     * Fast: O(n). Optimize: use single histogram, increment for one, decrement for the other input, so that all values
       zero proofs anagrams.
     * Portability (since low-level functions are used: for-loop, char-array, basic arithmetic)
-      Disadvantages:
+    
+   **Disadvantages**:
     * Size: Histogram as array with size, either 26 for alphabet, 256 for ASCII character range, or more for
       multiple-byte character sets such as UTF-8.
     * More and complex code to maintain, less abstract and less use of Java library-functions.
 3. Check with MultiSet: Count as in (2.) supported by MultiSet datastructure, to easily compare.
-   Advantages:
+   
+   **Advantages**:
     * O(n) time without having to declare a big fixed-size counting array.
-      Disadvantages:
+    
+   **Disadvantages**:
     * Adds a 3rd-party Guava dependency from Google (to understand, update).
 
 Last the improvement of letter-based anagrams is shown, that preprocesses the input strings. This will ignore
@@ -61,7 +67,7 @@ String preprocess(String source) {
 ## Stackoverflow
 Stackoverflow discusses specific issues, where the quality of questions and answers can vary and should be received with care and in context.
 
-The 10-year old question [How to check if two words are anagrams?](https://stackoverflow.com/questions/15045640/how-to-check-if-two-words-are-anagrams)
+The 10-year-old question [How to check if two words are anagrams?](https://stackoverflow.com/questions/15045640/how-to-check-if-two-words-are-anagrams)
 has achieved 51 scores and collected 37 answers, top 3 in a score-range of 50 to 100.
 
 Famous Java gold-badge winner [Stephen C's answer](https://stackoverflow.com/a/26070946/5730279), seems
@@ -89,4 +95,4 @@ The simple sorting approach is widely recommended for many benefits:
 
 1. High readability, easy to understand and explain. Still it has quite acceptable performance: O(N log N).
 2. Even modern input like special Unicode characters (e.g. emojis) can be supported with some adjustments.
-3. Furthermore the resulting normalized string (canonical form) can be reused as lookup key.
+3. Furthermore, the resulting normalized string (canonical form) can be reused as lookup key.

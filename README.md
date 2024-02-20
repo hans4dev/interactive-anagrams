@@ -19,9 +19,9 @@ There are two ways to install the executable Java archive (Fat JAR), either down
 (a) Install by downloading the released JAR file, e.g. by using `wget` or the `curl` command.
 
 ```bash
-  curl -o https://github.com/hans4dev/interactive-anagrams/releases/latest/interactive-anagrams-<version>.jar
+  curl -O "https://github.com/hans4dev/interactive-anagrams/releases/download/$version/interactive-anagrams-$version.jar"
 ```
-Where `<version>` needs to be replaced with the current version, like `0.0.1`.
+Where `$version` needs to be set or replaced with the desired version, like `0.0.1`.
  
 
 (b) Install by cloning the repository and building from the sources. Use Gradle tasks `build` and `fatJar` for packaging.
@@ -68,9 +68,9 @@ Install dependencies and build the (Fat) JAR by executing the Gradle tasks `buil
 Start the console-application directly from the JAR in your favourite terminal, optionally with ANSI color support. Therefor use the `-jar` option of the `java` command. 
 
 ```bash
-  java -jar interactive-anagrams-<version>.jar
+  java -jar "interactive-anagrams-$version.jar"
 ```
-Where `<version>` needs to be replaced with the current version, like `0.0.1`.
+Where `$version` needs to be set or replaced with the current version, like `0.0.1`.
 
 ## Running Tests
 
@@ -89,4 +89,8 @@ To run tests, execute the Gradle task `test`.
 
 ## Documentation
 
-For additional insights to research, design and decisions made, please consult the separate [Documentation](docs).
+For additional insights please consult the separate [Documentation](docs), it covers:
+
+1. research,
+2. design and 
+3. decisions made
