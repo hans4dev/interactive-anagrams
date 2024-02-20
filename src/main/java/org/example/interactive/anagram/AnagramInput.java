@@ -2,17 +2,16 @@ package org.example.interactive.anagram;
 
 import java.util.*;
 
+/**
+ * Text-processing for anagram-related input.
+ *
+ * <ol>
+ *     <li>Validation: {@link #requireLetters(String, int)}</li>
+ *     <li>Cleaning and conversion: {@link #letters(String)}</li>
+ *     <li>Key/index creation (Canonical form): {@link #sortedLetters(String)}</li>
+ * </ol>
+ */
 public class AnagramInput {
-
-    static String sortedLetters(String text) {
-        char[] chars = letters(text).toCharArray();
-        Arrays.sort(chars);
-        return new String(chars);
-    }
-
-    static String letters(String text) {
-        return text.trim().toLowerCase().replaceAll("[^a-z]+", "");
-    }
 
     public static String requireLetters(String text, int minimumLength) {
         if (text == null || text.isBlank()) {
@@ -25,5 +24,15 @@ public class AnagramInput {
         }
 
         return letters;
+    }
+
+    static String sortedLetters(String text) {
+        char[] chars = letters(text).toCharArray();
+        Arrays.sort(chars);
+        return new String(chars);
+    }
+
+    private static String letters(String text) {
+        return text.trim().toLowerCase().replaceAll("[^a-z]+", "");
     }
 }
