@@ -1,3 +1,5 @@
+package anagram;
+
 import java.util.*;
 
 public class AnagramInput {

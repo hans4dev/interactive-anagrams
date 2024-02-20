@@ -1,3 +1,4 @@
+import anagram.Anagrams
 import spock.lang.Specification
 
 class AnagramsTest extends Specification {

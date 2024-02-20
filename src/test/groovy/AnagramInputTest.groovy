@@ -1,3 +1,4 @@
+import anagram.AnagramInput
 import spock.lang.Specification
 
 class AnagramInputTest extends Specification {

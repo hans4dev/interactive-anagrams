@@ -1,3 +1,4 @@
+import anagram.InputHistory
 import spock.lang.Specification
 
 class InputHistoryTest extends Specification {
