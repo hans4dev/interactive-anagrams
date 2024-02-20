@@ -11,14 +11,14 @@ public class InputHistory {
      * Search for matching anagrams in recorded input history.
      *
      * @param searchPhrase a phrase to search for anagrams, must be at least 2 letters
-     * @return a set of trimmed inputs that are found as anagrams to the given search phrase (de-duplicated)
+     * @return a set of trimmed inputs that are found as anagrams to the given search phrase (de-duplicated) or empty set.
      */
     public Set<String> findAnagramsFor(String searchPhrase) {
         AnagramInput.requireLetters(searchPhrase, Anagrams.MINIMUM_2_LETTERS);
 
         String searchKey = AnagramInput.sortedLetters(searchPhrase);
 
-        return canonicalFormToInputs.get(searchKey);
+        return canonicalFormToInputs.getOrDefault(searchKey, Collections.emptySet());
     }
 
     /**

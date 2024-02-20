@@ -14,7 +14,7 @@ class InputHistoryTest extends Specification {
 
     def "inputs are added to history"() {
         given: "input history with 2 anagrams"
-        def history = new InputHistory();
+        def history = new InputHistory()
 
         when: "adding 3 texts"
         for (i in 1..3) {
@@ -27,7 +27,7 @@ class InputHistoryTest extends Specification {
 
     def "find anagrams for matching phrase"() {
         given: "input history with 2 anagrams"
-        def history = new InputHistory();
+        def history = new InputHistory()
         history.add("listen")
         history.add("enlist")
 
@@ -37,4 +37,19 @@ class InputHistoryTest extends Specification {
         then: "the previous 2 inputs are found"
         found  == ["listen", "enlist"] as Set
     }
+
+    def "empty if no anagrams found"() {
+        given: "input history with 2 anagrams"
+        def history = new InputHistory()
+        history.add("listen")
+        history.add("enlist")
+
+        when: "searching for a non existing input"
+        def found = history.findAnagramsFor("non-existing phrase")
+
+        then: "no inputs are found"
+        found.empty
+    }
+
+
 }
