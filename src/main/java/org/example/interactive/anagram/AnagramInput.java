@@ -14,7 +14,7 @@ public class AnagramInput {
         return text.trim().toLowerCase().replaceAll("[^a-z]+", "");
     }
 
-    static String requireLetters(String text, int minimumLength) {
+    public static String requireLetters(String text, int minimumLength) {
         if (text == null || text.isBlank()) {
             throw new IllegalArgumentException("must be not null, blank or empty");
         }

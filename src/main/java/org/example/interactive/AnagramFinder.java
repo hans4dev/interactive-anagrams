@@ -1,5 +1,6 @@
 package org.example.interactive;
 
+import org.example.interactive.anagram.AnagramInput;
 import org.example.interactive.anagram.Anagrams;
 import org.example.interactive.anagram.InputHistory;
 
@@ -15,6 +16,10 @@ import java.util.Set;
 public class AnagramFinder {
 
     private final InputHistory inputHistory = new InputHistory();
+
+    public static void validate(String input) throws IllegalArgumentException {
+        AnagramInput.requireLetters(input, Anagrams.MINIMUM_2_LETTERS);
+    }
 
     public boolean areAnagrams(String subject, String phrase) {
         inputHistory.add(subject);
