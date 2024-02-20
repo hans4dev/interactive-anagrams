@@ -32,6 +32,6 @@ class InputHistoryTest extends Specification {
         def found = history.findAnagramsFor("silent")
 
         then: "the previous 2 inputs are found"
-        found as Set  == ["listen", "enlist"] as Set
+        found  == ["listen", "enlist"] as Set
     }
 }

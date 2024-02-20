@@ -2,7 +2,7 @@ import java.util.*;
 
 public class AnagramInput {
 
-    public static String sortedLetters(String text) {
+    static String sortedLetters(String text) {
         char[] chars = letters(text).toCharArray();
         Arrays.sort(chars);
         return new String(chars);
@@ -13,8 +13,8 @@ public class AnagramInput {
     }
 
     static String requireLetters(String text, int minimumLength) {
-        if (text == null || text.isBlank() || text.trim().length() < minimumLength) {
-            throw new IllegalArgumentException(String.format("must be not null and have a minimum length of %d", minimumLength));
+        if (text == null || text.isBlank()) {
+            throw new IllegalArgumentException("must be not null, blank or empty");
         }
 
         String letters = letters(text);

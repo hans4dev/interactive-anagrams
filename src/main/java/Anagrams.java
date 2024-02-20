@@ -3,14 +3,22 @@ import java.util.Arrays;
 import static java.util.Arrays.*;
 
 /**
- * Uses the approach "sort character arrays" to verify anagrams.
+ * Implementation of the simple approach "sort character arrays" to verify anagrams.
+ *
+ * <h3>Constraints and Design</h3>
+ * Follows the definition of Anagrams from the English Wikipedia.
  * Considers letters (a-z) only while letter-case, whitespace and punctuation or other characters are ignored.
  * Uses {@link AnagramInput} for validation and cleaning.
- * <p>
- * A predicate method {{@link #areAnagrams(String, String)} can be used to verify anagrams.
- * </p>
+ *
+ * <h3>Usage</h3>
+ * A predicate method {@link #areAnagrams(String, String)} can be used to verify anagrams.
+ *
+ * @see <a href="https://en.wikipedia.org/wiki/Anagrams">Wikipedia (en, 2024-01-09): Anagrams</a>
  */
-public class AnagramFinder {
+public class Anagrams {
+
+    public static final int MINIMUM_2_LETTERS = 2;
+
     /**
      * Verifies if two texts are anagrams of each other.
      *
@@ -21,8 +29,8 @@ public class AnagramFinder {
      */
     public static boolean areAnagrams(String subject, String phrase) throws IllegalArgumentException {
 
-        char[] subjectLetters = AnagramInput.requireLetters(subject, 2).toCharArray();
-        char[] phraseLetters = AnagramInput.requireLetters(phrase, 2).toCharArray();
+        char[] subjectLetters = AnagramInput.requireLetters(subject, MINIMUM_2_LETTERS).toCharArray();
+        char[] phraseLetters = AnagramInput.requireLetters(phrase, MINIMUM_2_LETTERS).toCharArray();
 
         if (subjectLetters.length != phraseLetters.length) {
             return false;
