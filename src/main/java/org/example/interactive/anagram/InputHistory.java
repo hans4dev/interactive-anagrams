@@ -1,4 +1,4 @@
-package anagram;
+package org.example.interactive.anagram;
 
 import java.util.*;
 import java.util.stream.IntStream;

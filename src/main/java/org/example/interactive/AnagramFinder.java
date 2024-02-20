@@ -1,5 +1,7 @@
-import anagram.Anagrams;
-import anagram.InputHistory;
+package org.example.interactive;
+
+import org.example.interactive.anagram.Anagrams;
+import org.example.interactive.anagram.InputHistory;
 
 import java.util.Set;
 

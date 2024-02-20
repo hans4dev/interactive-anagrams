@@ -1,4 +1,6 @@
-import anagram.Anagrams
+package interactive.anagram
+
+import org.example.interactive.anagram.Anagrams
 import spock.lang.Specification
 
 class AnagramsTest extends Specification {

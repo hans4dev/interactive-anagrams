@@ -1,4 +1,6 @@
-import anagram.InputHistory
+package interactive.anagram
+
+import org.example.interactive.anagram.InputHistory
 import spock.lang.Specification
 
 class InputHistoryTest extends Specification {
